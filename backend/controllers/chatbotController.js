@@ -62,8 +62,3 @@ exports.chatbotHandler = async (req, res) => {
     res.status(500).json({ error: "Chatbot error." });
   }
 };
-
-
-
-
-// This is my FYP named as Sourcio which is a B2B E-Commerce marketplace. Pakistan's first ever B2B platform which is built in view of solve the problem of sourcing in Pakistan specially for E-Commerce buisness owners.
