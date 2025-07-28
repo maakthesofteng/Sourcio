@@ -1,64 +1,31 @@
-// const { ChatOpenAI } = require("langchain/chat_models/openai");
-// const { HumanMessage } = require("langchain/schema");
-// require("dotenv").config();
+const OpenAI = require("openai");
 
-// exports.chatbotHandler = async (req, res) => {
-//   try {
-//     const { message } = req.body;
+const token = process.env["GITHUB_TOKEN"];
+const endpoint = "https://models.github.ai/inference";
+const modelName = "openai/gpt-4o-mini";
 
-//     if (!message) {
-//       return res.status(400).json({ error: "Message is required." });
-//     }
-
-//     const chat = new ChatOpenAI({
-//       openAIApiKey: process.env.OPENAI_API_KEY,
-//       temperature: 0.7,
-//     });
-
-//     const result = await chat.invoke([
-//       new HumanMessage(message),
-//     ]);
-
-//     res.status(200).json({ reply: result.content });
-//   } catch (error) {
-//     console.error("Chatbot error:", error.message);
-//     res.status(500).json({ error: "Internal chatbot error." });
-//   }
-// };
-
-
-
-// const fetch = require("node-fetch");
+const client = new OpenAI({ baseURL: endpoint, apiKey: token });
 
 exports.chatbotHandler = async (req, res) => {
   const userMessage = req.body.message;
-  const HF_API_KEY = process.env.HF_API_KEY;
-
-  const response = await fetch("https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${HF_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      inputs: {
-        text: userMessage
-      }
-    })
-  });
 
   try {
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Hugging Face returned error: ${errorText}`);
-    }
+    const response = await client.chat.completions.create({
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: userMessage },
+      ],
+      temperature: 1.0,
+      top_p: 1.0,
+      max_tokens: 1000,
+      model: modelName,
+    });
 
-    const data = await response.json();
-    const generated = data?.generated_text || "Sorry, I didn't understand.";
-
+    const generated = response.choices[0]?.message?.content || "Sorry, I didn't understand.";
     res.json({ reply: generated });
+
   } catch (error) {
-    console.error("Hugging Face API error:", error.message);
+    console.error("GitHub Models API error:", error.message);
     res.status(500).json({ error: "Chatbot error." });
   }
 };
