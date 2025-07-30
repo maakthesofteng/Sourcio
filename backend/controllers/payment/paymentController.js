@@ -27,17 +27,6 @@ class paymentController {
           account: account.id,
           refresh_url : 'http://localhost:3001/refresh',
           return_url : `http://localhost:3001/success?activeCode = ${uid}`, type : 'account_onboarding'
-        //   refresh_url:
-        //     mode === "production"
-        //       ? `${process.env.admin_panel_production_url}/refresh`
-        //       : `${process.env.admin_panel_lcoal_url}/refresh`,
-        //   return_url:
-        //     mode === "production"
-        //       ? `${process.env
-        //           .admin_panel_production_url}/success?activeCode=${uid}`
-        //       : `${process.env
-        //           .admin_panel_lcoal_url}/success?activeCode=${uid}`,
-        //   type: "account_onboarding"
         });
         await striptModel.create({
           sellerId: id,
@@ -52,19 +41,6 @@ class paymentController {
           account: account.id,
           refresh_url : 'http://localhost:3001/refresh',
           return_url : `http://localhost:3001/success?activeCode = ${uid}`, type : 'account_onboarding'
-        // const accountLink = await stripe.accountLinks.create({
-        //   account: account.id,
-        //   refresh_url:
-        //     mode === "production"
-        //       ? `${process.env.admin_panel_production_url}/refresh`
-        //       : `${process.env.admin_panel_lcoal_url}/refresh`,
-        //   return_url:
-        //     mode === "production"
-        //       ? `${process.env
-        //           .admin_panel_production_url}/success?activeCode=${uid}`
-        //       : `${process.env
-        //           .admin_panel_lcoal_url}/success?activeCode=${uid}`,
-        //   type: "account_onboarding"
         });
         await striptModel.create({
           sellerId: id,
