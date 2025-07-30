@@ -28,7 +28,6 @@ const ChatSeller = () => {
     currentSeller,
     successMessage
   } = useSelector((state) => state.chat);
-  //   const { userInfo } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
   const [recevedMessage, setRecevedMessage] = useState("");
   const [text, setText] = useState("");
@@ -84,10 +83,6 @@ const ChatSeller = () => {
       }
     }
   }, [recevedMessage]);
-
-  //   useEffect(() => {
-  //     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  //   }, [seller_admin_message]);
 
   return (
     <div className="px-2 lg:px-7 py-5">

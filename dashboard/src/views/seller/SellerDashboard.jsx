@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { RiProductHuntLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -15,7 +15,6 @@ const SellerDashboard = () => {
     totalOrder = 0,
     totalProduct = 0,
     totalPendingOrder = 0,
-    // totalSeller = 0,
     recentOrders = [],
     recentMessage = []
   } = useSelector((state) => state.dashboardIndex || {});
