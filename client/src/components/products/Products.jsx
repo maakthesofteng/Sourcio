@@ -81,7 +81,7 @@ const Products = ({ title, products }) => {
                       {pl.name?.slice(0, 40)}
                     </h2>
                     <span className="text-md font-bold text-gray-800">
-                      ${pl.price}
+                      Rs {pl.price}
                     </span>
                     {/* {
                                             title !== 'Latest Products' && <p className='text-[13px]'>{convert(pl?.description)?.slice(0, 50)}...</p>

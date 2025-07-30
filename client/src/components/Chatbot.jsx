@@ -1,4 +1,3 @@
-// src/components/Chatbot.jsx
 import { useState } from "react";
 
 const Chatbot = ({ onClose }) => {
@@ -43,7 +42,7 @@ const Chatbot = ({ onClose }) => {
         <button
           onClick={() => {
             console.log("Close button clicked");
-            onClose(); // make sure this exists
+            onClose();
           }}
           className="text-xl font-bold"
         >

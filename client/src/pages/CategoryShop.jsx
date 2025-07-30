@@ -161,7 +161,7 @@ const CategoryShops = () => {
 
                 <div>
                   <span className="text-red-500 font-bold text-lg">
-                    ${Math.floor(state.values[0])} - $
+                    Rs {Math.floor(state.values[0])} - Rs{" "}
                     {Math.floor(state.values[1])}
                   </span>
                 </div>

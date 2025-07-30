@@ -109,7 +109,7 @@ const FeatureProducts = ({ products }) => {
             <div className="py-3 text-gray-700 px-2">
               <h2>{p.name?.slice(0, 40)}...</h2>
               <div className="flex justify-start items-center gap-3">
-                <span className="text-lg  font-bold">${p.price}</span>
+                <span className="text-lg  font-bold">Rs {p.price}</span>
                 <div className="flex">
                   <Ratings ratings={p.rating} />
                 </div>
